@@ -1,0 +1,22 @@
+version: '3'
+services: 
+    web:
+        build:
+            # look in current working dir and find a file 
+            # with that name (Dockerfile.dev)
+            context: .
+            dockerfile: Dockerfile.dev
+        ports: 
+            - "3000:3000"
+        volumes: 
+            - /app/node_modules
+            - .:/app
+        # build our test service
+    tests:
+        build:
+            dockerfile: Dockerfile.dev
+            context: .
+        volumes: 
+            - /app/node_modules
+            - .:/app
+        command: ["npm", "run", "test"]
