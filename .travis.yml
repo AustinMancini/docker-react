@@ -1,0 +1,15 @@
+# Grant super-user level permissions
+sudo: required
+
+# reinstall Docker CLI
+services:
+    - docker
+
+# Commands excuted before our tests are run
+before_install:
+    # build Docker image before the tests are run
+    - docker build -t amancinidoc/docker-react -f Dockerfile.dev .
+
+# contains commands to run out test suite when tests need to be executed
+script:
+    - docker run -e CI=true amancinidoc/docker-react npm run test
