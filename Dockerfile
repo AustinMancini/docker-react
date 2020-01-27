@@ -3,7 +3,7 @@
 #install all depend. and run "npm build"
 FROM node:alpine as builder
 
-WORKDIR '/usr/src/app'
+WORKDIR '/app'
 COPY package*.json ./
 RUN npm install
 COPY . .
