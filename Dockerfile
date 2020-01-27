@@ -10,6 +10,7 @@ COPY . .
 
 # second phase
 FROM nginx
+EXPOSE 80
 
 # copy over build folder to nginx container were putting together
 COPY --from=builder /app/build /usr/share/nginx/html
